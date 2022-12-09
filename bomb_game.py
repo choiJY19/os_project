@@ -14,7 +14,7 @@ done = False
 clock = pygame.time.Clock()
 
 def runGame():
-    bomb_image = pygame.image.load('bomb.png')
+    bomb_image = pygame.image.load('garlic.png')
     bomb_image = pygame.transform.scale(bomb_image, (50, 50))
     bombs = []
 
@@ -25,11 +25,11 @@ def runGame():
         dy = random.randint(3, 9)
         bombs.append({'rect': rect, 'dy': dy})
 
-    person_image = pygame.image.load('person.png')
+    person_image = pygame.image.load('tiger.png')
     person_image = pygame.transform.scale(person_image, (100, 100))
     person = pygame.Rect(person_image.get_rect())
     person.left = size[0] // 2 - person.width // 2
-    person.top = size[0] - person.height
+    person.top = size[1] - person.height
     person_dx = 0
     person_dy = 0
 
