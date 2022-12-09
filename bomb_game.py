@@ -66,6 +66,11 @@ def runGame():
 
         person.left = person.left + person_dx
 
+        if person.left < 0 :
+            person.left = 0
+        elif person.left > size[0] - person.width :
+            person.left = size[0] - person.width
+
         screen.blit(person_image, person)
 
         for bomb in bombs:
