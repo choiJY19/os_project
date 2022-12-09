@@ -29,7 +29,7 @@ def runGame():
     person_image = pygame.transform.scale(person_image, (100, 100))
     person = pygame.Rect(person_image.get_rect())
     person.left = size[0] // 2 - person.width // 2
-    person.top = size[0] - person.height
+    person.top = size[1] - person.height
     person_dx = 0
     person_dy = 0
 
