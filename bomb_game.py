@@ -7,7 +7,7 @@ pygame.init()  # 2. pygame 초기화
 # 3. pygame에 사용되는 전역변수 선언
 
 BLACK = (0, 0, 0)
-size = [200,300] 
+size = [600, 800] 
 screen = pygame.display.set_mode(size)
 
 done = False
