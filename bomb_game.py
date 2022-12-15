@@ -14,24 +14,24 @@ done = False
 clock = pygame.time.Clock()
 
 def runGame():
-    bomb_image = pygame.image.load('garlic.png')
-    bomb_image = pygame.transform.scale(bomb_image, (50, 50))
-    bombs = []
+    garlic_image = pygame.image.load('garlic.png')
+    garlic_image = pygame.transform.scale(garlic_image, (50, 50))
+    garlic = []
 
     for i in range(5):
-        rect = pygame.Rect(bomb_image.get_rect())
+        rect = pygame.Rect(garlic_image.get_rect())
         rect.left = random.randint(0, size[0])
         rect.top = -100
         dy = random.randint(3, 9)
-        bombs.append({'rect': rect, 'dy': dy})
+        garlic.append({'rect': rect, 'dy': dy})
 
-    person_image = pygame.image.load('tiger.png')
-    person_image = pygame.transform.scale(person_image, (100, 100))
-    person = pygame.Rect(person_image.get_rect())
-    person.left = size[0] // 2 - person.width // 2
-    person.top = size[1] - person.height
-    person_dx = 0
-    person_dy = 0
+    tiger_image = pygame.image.load('tiger.png')
+    tiger_image = pygame.transform.scale(tiger_image, (100, 100))
+    tiger = pygame.Rect(tiger_image.get_rect())
+    tiger.left = size[0] // 2 - tiger.width // 2
+    tiger.top = size[1] - tiger.height
+    tiger_dx = 0
+    tiger_dy = 0
 
     global done
     while not done:
@@ -44,39 +44,39 @@ def runGame():
                 break
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
-                    person_dx = -5
+                    tiger_dx = -5
                 elif event.key == pygame.K_RIGHT:
-                    person_dx = 5
+                    tiger_dx = 5
 
             elif event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
-                    person_dx = 0
+                    tiger_dx = 0
                 elif event.key == pygame.K_RIGHT:
-                    person_dx = 0
+                    tiger_dx = 0
 
-        for bomb in bombs:
-            bomb['rect'].top += bomb['dy']
-            if bomb['rect'].top > size[1]:
-                bombs.remove(bomb)
-                rect = pygame.Rect(bomb_image.get_rect())
+        for ga in garlic:
+            ga['rect'].top += ga['dy']
+            if ga['rect'].top > size[1]:
+                garlic.remove(bomb)
+                rect = pygame.Rect(garlic_image.get_rect())
                 rect.left = random.randint(0, size[0])
                 rect.top = -100
                 dy = random.randint(3, 9)
-                bombs.append({'rect': rect, 'dy': dy})
+                garlic.append({'rect': rect, 'dy': dy})
 
-        person.left = person.left + person_dx
+        tiger.left = tiger.left + tiger_dx
 
-        if person.left < 0 :
-            person.left = 0
-        elif person.left > size[0] - person.width :
-            person.left = size[0] - person.width
+        if tiger.left < 0 :
+            tiger.left = 0
+        elif tiger.left > size[0] - tiger.width :
+            tiger.left = size[0] - tiger.width
 
-        screen.blit(person_image, person)
+        screen.blit(tiger_image, tiger)
 
-        for bomb in bombs:
-            if bomb['rect'].colliderect(person):
+        for ga in garlic:
+            if ga['rect'].colliderect(tiger):
                 done = True
-            screen.blit(bomb_image, bomb['rect'])
+            screen.blit(garlic_image, ga['rect'])
 
         pygame.display.update()
 
