@@ -4,7 +4,7 @@ node {
         git 'https://github.com/choiJY19/os_project.git'
         }
         stage('Build image') {
-                app = docker.build("choiJY19/bombgame")
+                app = docker.build("choijy19/bombgame")
         }
         stage('Push image') {
                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
